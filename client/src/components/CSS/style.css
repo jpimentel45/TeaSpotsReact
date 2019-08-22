@@ -1,25 +1,58 @@
-/* .remove-btn {
-    margin-right: 0.5 rem;
+.App-logo {
+    margin-left: 40%;
 }
 
-.fade-enter{
-    opacity: 0.01;
+span.text-secondary{
+    color: #650D14!important;
+    text-decoration: none;
 }
 
-.fade-enter-active{
-opacity: 1;
-transition: opacity 1000ms ease-in;
-}
-.fade-exit {
-    opacity: 1;
+span.text-secondary:hover{
+    font-weight: bold;
+    text-decoration: none!important;
+    text-underline-position: none;
 }
 
-.fade-exiit-active {
-    opacity: 0.1;
-    transition: opacity 1000ms ease-in;
-} */
+a.btn.btn-link.text-secondary {
+    text-decoration: none;
+}
 
-.navbar {
-    background-color: black;
+a.btn.btn-link {
+    text-decoration: none;
+}
+
+h2 {
+    color: #650D14;
+    text-transform: uppercase;
+}
+
+.menu-img {
+    width: 100vw;
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.title {
+    position: absolute;
+    bottom: 200px;
+    left: 13%;
+}
+
+.h4, h4 {
+    font-size: 15px;
+}
+
+button.btn.btn-primary {
+    color: #fff;
+    background-color: #075740;
+    border-color: #075740;
+    margin-left: 50%;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+div.container {
+    margin-top: 50px;
 }
 
