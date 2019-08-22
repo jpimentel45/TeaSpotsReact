@@ -16,7 +16,7 @@ mongoose.connect(db, { useNewUrlParser: true })
 	.catch(err => console.log(err));
 const special = require('./routes/api/special');
 //use routes
-app.use('/api/special', special)
+//app.use('/api/special', special)
 
 // Route requires
 const user = require('./routes/user')
