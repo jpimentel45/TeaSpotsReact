@@ -3,7 +3,10 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 class LoginForm extends Component {
+   
     constructor() {
+        console.log("props under constructor")
+        console.log(this.props)
         super()
         this.state = {
             username: '',
@@ -16,12 +19,9 @@ class LoginForm extends Component {
     }
 
     handleChange(event) {
-        // console.log(event)
-        console.log(event.target)
         this.setState({
             [event.target.name]: event.target.value
         })
-
     }
 
     handleSubmit(event) {
@@ -39,6 +39,8 @@ class LoginForm extends Component {
                 if (response.status === 200) {
                     // update App.js state
                     localStorage.setItem('usertoken', response.data)
+                    console.log('Showing props')
+                    console.log(this.props)
                     this.props.updateUser({
                         loggedIn: true,
                         username: response.data.username
@@ -57,6 +59,8 @@ class LoginForm extends Component {
     }
 
     render() {
+        console.log("props under constructor")
+        console.log(this.props)
         if (this.state.redirectTo) {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
@@ -109,4 +113,3 @@ class LoginForm extends Component {
 }
 
 export default LoginForm
-

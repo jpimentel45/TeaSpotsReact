@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('../../passport')
 
 //Item Model
 const Special = require('../../models/DailySpecial');
@@ -8,7 +9,7 @@ const Special = require('../../models/DailySpecial');
 //@desc GET Daily Special
 //@access Public
 
-router.get('/', (req, res)=>{
+router.get('/',  (req, res)=>{
  Special.find()
  .sort({date: -1})
  .then(special => res.json(special))
@@ -18,7 +19,7 @@ router.get('/', (req, res)=>{
 //@desc  CREATE Post Daily Special
 //@access Public
 
-router.post('/', (req, res) => {
+router.post('/', checkAuthentication, (req, res) => {
 const newSpecial = new Special({name: req.body.name});
 
     newSpecial.save().then(special => res.json(special))
@@ -29,6 +30,16 @@ router.delete('/:id', (req, res) => {
     .then(special => special.remove().then(() => res.json({success: true})))
         .catch(err => res.status(404).json({ success: false }))
 })
-
+function checkAuthentication(req, res, next) {
+    console.log("REQ.AUTHENTICATED")
+    console.log(req.isAuthenticated())
+    if (req.isAuthenticated()) {
+        //req.isAuthenticated() will return true if user is logged in
+        console.log("checkAuthentication SUCCESS for update specials")
+        next();
+    } else {
+        console.log("checkAuthentication FAILED")
+    }
+}
 
 module.exports = router;

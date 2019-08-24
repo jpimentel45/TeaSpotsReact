@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Menu from './MainMenu'
+
 class Home extends Component {
     constructor() {
         super()
@@ -12,9 +12,8 @@ class Home extends Component {
         }
         return (
             <div>
-                
-                <p>It's good to be home</p>
-                <img style={imageStyle} src="https://i.ytimg.com/vi/N1icEHtgb3g/maxresdefault.jpg" />
+                <p>It is your profile page</p>
+                <img style={imageStyle} src="https://seeklogo.net/wp-content/uploads/2011/08/manchester-united-logo-vector.png" />
             </div>
         )
 

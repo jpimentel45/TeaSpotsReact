@@ -5,7 +5,7 @@ const passport = require('../passport')
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 process.env.SECRET_KEY = 'secret'
-router.post('/', (req, res) => {
+router.post('/register', (req, res) => {
     console.log('user signup');
     console.log(req.body)
     const today = new Date()

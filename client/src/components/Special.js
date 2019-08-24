@@ -20,10 +20,11 @@ class ShoppingList extends Component {
             <Container>
                 <ListGroup>
                     <TransitionGroup className="shopping-list">
-                        {items.map(({ _id, name }) => (
+                        {items.map(({ _id, name, date }) => (
                             <CSSTransition key={_id} >
                                 <ListGroupItem>
                                     {name}
+                                    {date}
                                 </ListGroupItem>
                             </CSSTransition>
                         ))}
