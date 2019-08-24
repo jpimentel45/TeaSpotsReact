@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
+
+
 class LoginForm extends Component {
    
     constructor() {
@@ -65,8 +67,10 @@ class LoginForm extends Component {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
             return (
-                <div>
-                    <h4>Login</h4>
+                <div className="login-content">
+                    
+                    
+                    {/* <h4 className="login-content">Login</h4> */}
                     <form className="form-horizontal">
                         <div className="form-group">
                             <div className="col-1 col-ml-auto">
@@ -89,7 +93,7 @@ class LoginForm extends Component {
                             </div>
                             <div className="col-3 col-mr-auto">
                                 <input className="form-input"
-                                    placeholder="password"
+                                    placeholder="Password"
                                     type="password"
                                     name="password"
                                     value={this.state.password}
@@ -106,6 +110,7 @@ class LoginForm extends Component {
                                 type="submit">Login</button>
                         </div>
                     </form>
+                
                 </div>
             )
         }

@@ -62,10 +62,12 @@ class LoginForm extends Component {
         } else {
             return (
                 <div>
-                    <h4>Login</h4>
+                    
                     <form className="form-horizontal">
                         <div className="form-group">
+                            
                             <div className="col-1 col-ml-auto">
+                                <h2>Login</h2>
                                 <label className="form-label" htmlFor="username">Username</label>
                             </div>
                             <div className="col-3 col-mr-auto">
@@ -81,11 +83,11 @@ class LoginForm extends Component {
                         </div>
                         <div className="form-group">
                             <div className="col-1 col-ml-auto">
-                                <label className="form-label" htmlFor="password">Password: </label>
+                                <label className="form-label" htmlFor="password">Password </label>
                             </div>
                             <div className="col-3 col-mr-auto">
                                 <input className="form-input"
-                                    placeholder="password"
+                                    placeholder="Password"
                                     type="password"
                                     name="password"
                                     value={this.state.password}

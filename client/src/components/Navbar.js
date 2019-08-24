@@ -22,6 +22,12 @@ import ResetPassword from './reset-password'
 class Navbar extends Component {
     constructor() {
         super()
+        this.state = {
+            username: '',
+            password: '',
+            redirectTo: null
+        }
+   
         this.logout = this.logout.bind(this)
         this.getUser = this.getUser.bind(this)
         this.getusername = this.getusername.bind(this)
@@ -86,6 +92,9 @@ class Navbar extends Component {
                 this.props.updateUser({
                     loggedIn: false,
                     username: null
+                })
+                this.setState({
+                    redirectTo: '/'
                 })
             }
             localStorage.removeItem('usertoken')
@@ -235,8 +244,8 @@ class Navbar extends Component {
                 <Route
                     path="/special"
                     render={() =>
-                        <div>
-                        <p>Pasadena Daily Special:</p>
+                        <div className="special">
+                        <h2 >Pasadena Daily Special</h2>
                         <Special
                 
                         // updateUser={this.updateUser}

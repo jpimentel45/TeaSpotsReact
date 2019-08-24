@@ -4,7 +4,7 @@ import React, { Component } from "react";
 // import Card from "react-bootstrap/Card";
 // import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 // import Button from "react-bootstrap/Button";
-import { Jumbotron, Card, ButtonToolbar, Button, Container, Row, Col, } from "react-bootstrap";
+import { Form, Card, ButtonToolbar, Button, Container, Row, Col, } from "react-bootstrap";
 import './CSS/style.css';
 
 import menu from '../menu.jpg';
@@ -19,11 +19,11 @@ export default class Menu extends Component {
     render() {
         return (
             <div>
-         
+
 
                 <div>
                     <img src={menu} className="menu-img" alt="menu" />
-                    
+
                 </div>
 
                 <Container>
@@ -35,16 +35,48 @@ export default class Menu extends Component {
                                         <h2>
                                             Smoothies
                             </h2>
-                                        <h4>
+                                        <p className="soy">
                                             Soymilk and Almond Milk available on request. Orgnaic milk 60¢
-                            </h4>
+                            </p>
                                         <h4>$4.25</h4>
-                                        <ul>
-                                            <li>Green Apple</li>
-                                            <li>Mango</li>
-                                            <li>Passion Fruit</li>
-                                            <li>Peach</li>
-                                        </ul>
+                                        <Form>
+                                            {['radio'].map(type => (
+                                                <div key={`default-${type}`} className="mb-3">
+                                                    <Form.Check
+                                                        type={type}
+                                                        id={`default-${type}`}
+                                                        label={`Green Apple ${type}`}
+                                                    />
+                                                </div>
+                                            ))}
+                                            {['radio'].map(type => (
+                                                <div key={`default-${type}`} className="mb-3">
+                                                    <Form.Check
+                                                        type={type}
+                                                        id={`default-${type}`}
+                                                        label={`Mango ${type}`}
+                                                    />
+                                                </div>
+                                            ))}
+                                            {['radio'].map(type => (
+                                                <div key={`default-${type}`} className="mb-3">
+                                                    <Form.Check
+                                                        type={type}
+                                                        id={`default-${type}`}
+                                                        label={`Passion Fruit ${type}`}
+                                                    />
+                                                </div>
+                                            ))}
+                                            {['radio'].map(type => (
+                                                <div key={`default-${type}`} className="mb-3">
+                                                    <Form.Check
+                                                        type={type}
+                                                        id={`default-${type}`}
+                                                        label={`Peach ${type}`}
+                                                    />
+                                                </div>
+                                            ))}
+                                        </Form>
                                     </Card.Body>
                                 </Card>
                             </Col>
@@ -54,13 +86,46 @@ export default class Menu extends Component {
                                         <h2>
                                             Fresh Fruit Juice
                             </h2>
+                            
                                         <h4>$4.75</h4>
-                                        <ul>
-                                            <li>Honey Dew</li>
-                                            <li>Orange</li>
-                                            <li>Watermelon</li>
-                                            <li>Lemon Honey</li>
-                                        </ul>
+                                        <Form>
+                                            {['radio'].map(type => (
+                                                <div key={`default-${type}`} className="mb-3">
+                                                    <Form.Check
+                                                        type={type}
+                                                        id={`default-${type}`}
+                                                        label={`Honey Dew${type}`}
+                                                    />
+                                                </div>
+                                            ))}
+                                            {['radio'].map(type => (
+                                                <div key={`default-${type}`} className="mb-3">
+                                                    <Form.Check
+                                                        type={type}
+                                                        id={`default-${type}`}
+                                                        label={`Orange ${type}`}
+                                                    />
+                                                </div>
+                                            ))}
+                                            {['radio'].map(type => (
+                                                <div key={`default-${type}`} className="mb-3">
+                                                    <Form.Check
+                                                        type={type}
+                                                        id={`default-${type}`}
+                                                        label={`Watermelon ${type}`}
+                                                    />
+                                                </div>
+                                            ))}
+                                            {['radio'].map(type => (
+                                                <div key={`default-${type}`} className="mb-3">
+                                                    <Form.Check
+                                                        type={type}
+                                                        id={`default-${type}`}
+                                                        label={`Lemon Honey ${type}`}
+                                                    />
+                                                </div>
+                                            ))}
+                                        </Form>
                                     </Card.Body>
                                 </Card>
                             </Col>
@@ -70,18 +135,48 @@ export default class Menu extends Component {
                                         <h2>
                                             Coffee
                             </h2>
-                                        <h4></h4>
-                                        <ul>
-                                            <li>Americano</li>
-                                            <li>Hot Chocolate</li>
-                                            <li>Latte</li>
-                                            <li>Sea Salt Latte</li>
-                                        </ul>
+                                        <h4>$4.75</h4>
+                                        <Form>
+                                            {['radio'].map(type => (
+                                                <div key={`default-${type}`} className="mb-3">
+                                                    <Form.Check
+                                                        type={type}
+                                                        id={`default-${type}`}
+                                                        label={`Americano ${type}`}
+                                                    />
+                                                </div>
+                                            ))}
+                                            {['radio'].map(type => (
+                                                <div key={`default-${type}`} className="mb-3">
+                                                    <Form.Check
+                                                        type={type}
+                                                        id={`default-${type}`}
+                                                        label={`Hot Chocolate ${type}`}
+                                                    />
+                                                </div>
+                                            ))}
+                                            {['radio'].map(type => (
+                                                <div key={`default-${type}`} className="mb-3">
+                                                    <Form.Check
+                                                        type={type}
+                                                        id={`default-${type}`}
+                                                        label={`Latte ${type}`}
+                                                    />
+                                                </div>
+                                            ))}
+                                            {['radio'].map(type => (
+                                                <div key={`default-${type}`} className="mb-3">
+                                                    <Form.Check
+                                                        type={type}
+                                                        id={`default-${type}`}
+                                                        label={`Sea Salt Latte ${type}`}
+                                                    />
+                                                </div>
+                                            ))}
+                                        </Form>
                                     </Card.Body>
                                 </Card>
                             </Col>
-
-
 
                         </Row>
                     </div>
