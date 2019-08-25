@@ -19,7 +19,8 @@ router.get('/',  (req, res)=>{
 //@desc  CREATE Post Daily Special
 //@access Public
 
-router.post('/', checkAuthentication, (req, res) => {
+router.post('/', (req, res) => {
+    console.log("Entering add special API")
 const newSpecial = new Special({name: req.body.name});
 
     newSpecial.save().then(special => res.json(special))

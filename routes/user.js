@@ -17,37 +17,76 @@ router.post('/register', (req, res) => {
     //     created: today
     // }
 
-    const { username, password } = req.body
+    const { username, password, first_name, last_name } = req.body
     // ADD VALIDATION
-    User.findOne({ username: username }, (err, user) => {
-        if (err) {
-            console.log('User.js post error: ', err)
-        } else if (user) {
-            console.log('Sorry, already a user with the username ')
-            res.json({
+    // User.findOne({ username: username }, (err, user) => {
+    //     if (err) {
+    //         console.log('User.js post error: ', err)
+    //     } else if (user) {
+    //         console.log('Sorry, already a user with the username ')
+    //         res.json({
 
-                error: `Sorry, already a user with the username: ${username}`
-            })
-        }
-        else {
-            const newUser = new User({
-                username: username,
-                password: password
-            })
-            console.log("req.body.password")
-            console.log(req.body.password)
-            bcrypt.hash(req.body.password, 10, (err, hash) => {
-                newUser.password = hash
-                User.create(newUser)
-                    .then(user => {
-                        res.json({ status: user.email + 'Registered!' })
-                    })
-                    .catch(err => {
-                        res.send('error: ' + err)
-                    })
-            })
-        }
-    })
+    //             error: `Sorry, already a user with the username: ${username}`
+    //         })
+    //     }
+    //     else {
+    //         const newUser = new User({
+    //             first_name,
+    //             last_name,
+    //             username: username,
+    //             password: password
+    //         })
+    //         console.log("req.body.password")
+    //         console.log(req.body.password)
+    //         bcrypt.hash(req.body.password, 10, (err, hash) => {
+    //             newUser.password = hash
+    //             User.create(newUser)
+    //                 .then(user => {
+    //                     res.json({ status: user.email + 'Registered!' })
+    //                 })
+    //                 .catch(err => {
+    //                     res.send('error: ' + err)
+    //                 })
+    //         })
+    //     }
+    // })
+
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (re.test(String(username).toLowerCase()) && password.length > 7) {
+        User.findOne({ username: username }, (err, user) => {
+            if (err) {
+                console.log('User.js post error: ', err)
+            } else if (user) {
+                console.log('Sorry, already a user with the username ')
+                res.json({
+
+                    error: `Sorry, already a user with the username: ${username}`
+                })
+            }
+            else {
+                const newUser = new User({
+                    username: username,
+                    password: password,
+                    first_name: first_name,
+                    last_name: last_name
+                })
+                console.log("req.body.password")
+                console.log(req.body.password)
+                bcrypt.hash(req.body.password, 10, (err, hash) => {
+                    newUser.password = hash
+                    User.create(newUser)
+                        .then(user => {
+                            console.log("user created")
+                            res.json({ status: user.email + 'Registered!' })
+                        })
+                        .catch(err => {
+                            res.send('error: ' + err)
+                        })
+                })
+            }
+        })
+    }
+
 })
 
 router.post(
@@ -58,18 +97,47 @@ router.post(
         next()
     },
     passport.authenticate('local'),
+    // (req, res) => {
+    //     console.log('logged in', req.user);
+    //     var userInfo = {
+    //         _id: req.user._id,
+    //         email: req.user.username
+    //     };
+
+    //     let token = jwt.sign(userInfo, process.env.SECRET_KEY, {
+    //         expiresIn: '604800'
+    //     })
+
+    //     res.send(token);
+    // }
+
     (req, res) => {
         console.log('logged in', req.user);
-        var userInfo = {
-            _id: req.user._id,
-            email: req.user.username
-        };
-
-        let token = jwt.sign(userInfo, process.env.SECRET_KEY, {
-            expiresIn: '604800'
+        User.findOne({
+            username: req.user.username
         })
+            .then(user => {
 
-        res.send(token);
+                console.log("user info under post /login")
+                console.log(user)
+                var userInfo = {
+                    _id: user._id,
+                    first_name: user.first_name,
+                    last_name: user.last_name,
+                    email: user.email
+                };
+
+                let token = jwt.sign(userInfo, process.env.SECRET_KEY, {
+                    expiresIn: '604800'
+                })
+                console.log(token)
+                res.send(token);
+            })
+
+
+
+
+
     }
 )
 

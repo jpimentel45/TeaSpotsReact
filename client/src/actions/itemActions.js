@@ -27,7 +27,7 @@ export const deleteItem = (id) => dispatch => {
 //item comes in with id and name 
 export const addItem = (item) => dispatch => {
   axios
-  .post('/api/special', item)
+  .post('/api/special/', item)
   .then(res => 
     dispatch({
         type: ADD_ITEM,

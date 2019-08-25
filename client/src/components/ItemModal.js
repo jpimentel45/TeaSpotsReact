@@ -33,6 +33,7 @@ name: this.state.name
 render(){
     return (
         <div>
+            
           <Button
           color='dark'
           style={{marginBottom: '2rem'}} 
@@ -42,11 +43,11 @@ render(){
         isOpen={this.state.modal}
         toggle={this.toggle}>
             <ModalHeader toggle={this.toggle}>
-Add To Shopping List 
+                    <h2>Add To Shopping List</h2> 
             </ModalHeader>
 <Form onSubmit={this.onSubmit}>
     <FormGroup>
-        <Label for='item'>
+        <Label for='item' className="item-title">
 Item
         </Label>
         <Input 
@@ -59,7 +60,7 @@ Item
         <Button
         color='dark'
         style={{marginTop: '2rem'}} block
-        >
+        className="modal-btn">
             Add Item
         </Button>
     </FormGroup>

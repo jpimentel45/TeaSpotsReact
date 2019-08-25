@@ -104,7 +104,7 @@ class Navbar extends Component {
             // this.props.history.pushState('/login');
             // this.props.history.pushState('/login');
             // this.props.history.pushState('/login');
-            return <Link to='/login'></Link>
+         window.location = '/login'
         }).catch(error => {
             console.log('Logout error')
             console.log(error)
@@ -140,7 +140,7 @@ class Navbar extends Component {
         const userLink = (
 
 
-            <Link to="#" className="btn btn-link text-secondary" >
+            <Link to="/" className="btn btn-link text-secondary" >
                 {this.getusername()}</Link>
 
 
@@ -159,17 +159,20 @@ class Navbar extends Component {
                     <div className="col-4" >
                         {loggedIn ? (
                             <section className="navbar-section">
+                                {localStorage.usertoken ? userLink : ""}
+                                <Link to="/updateSpecial" className="btn btn-link text-secondary">
+                                    <span className="text-secondary">Update Special</span>
+                                </Link> 
                                 <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
                                     <span className="text-secondary">logout</span></Link>
-                                <Link to="/Profile" className="btn btn-link text-secondary" onClick={this.getUser}>
+                                {/* <Link to="/Profile" className="btn btn-link text-secondary" onClick={this.getUser}>
                                     <span className="text-secondary">profile</span>
-                                </Link> 
+                                </Link>  */}
+                                
                                 <Link to="/signup" className="btn btn-link" onClick={this.getUser}>
                                     <span className="text-secondary" >sign up</span>
                                 </Link>
-                                <Link to="/updateSpecial" className="btn btn-link text-secondary">
-                                    <span className="text-secondary">Update Special</span>
-                                </Link>
+                               
                             </section>
                         ) : (
                         
@@ -201,14 +204,15 @@ class Navbar extends Component {
                 
 
                 <Route
-                    path="/updateSpecial"
+                    exact path="/updateSpecial"
                     render={() =>
 
                         <Container>
-<p>Make sure to delete, and add a new special</p>
+                            <h2>Make sure to delete, and add a new special</h2>
                             <ItemModal />
                             <ShoppingList />
-                        </Container> } />
+                        </Container> } 
+                        />
                 
 
                 <Route

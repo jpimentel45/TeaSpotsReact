@@ -1,6 +1,11 @@
 .App-logo {
     margin-left: 27%;
 }
+.navbar-section {
+    
+        box-sizing: unset;
+    
+}
 
 span.text-secondary {
     color: #650D14 !important;
@@ -67,7 +72,7 @@ h4 {
 
 p {
     font-size: 12px;
-    line-height: 5px;
+    line-height: 2;
 }
 
 button.btn.btn-primary {
@@ -109,6 +114,7 @@ div.container {
 .form-horizontal {
     margin-left: 40%;
     text-align: left;
+    width: 100%;
 }
 
 /* .col-3 {
@@ -165,4 +171,30 @@ textarea {
 
 .form-input {
     padding: 5px;
+}
+
+.btn-dark {
+    color: #fff;
+    background-color: #075740;
+    border-color: #075740;
+}
+
+.item-title{
+    margin-left: 15px;
+}
+
+.form-control {
+    width: 90%;
+    margin-left: 15px;
+}
+
+.modal-btn {
+    width: 90%;
+    margin-left: 15px;
+}
+.shopping-list {
+    text-align: center;
+}
+.navbar {
+    padding: 10px !important;
 }
